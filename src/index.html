@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+  <script src="/build/kai.js"></script>
+</head>
+<body>
+  <style>
+    /* Enter and leave animations can use different */
+    /* durations and timing functions.              */
+    .slide-fade-enter-active {
+      transition: all .6s ease;
+    }
+    .slide-fade-leave-active {
+      transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+    .slide-fade-enter {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+
+    .slide-fade-leave-to {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+
+    section { background-color:beige; border-radius:5px; border:1px solid teal; padding:10px; font-family:Arial, Helvetica, sans-serif; font-size:2em; }
+    li { margin-top:20px; }
+  </style>
+
+  <!-- <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+  <three-exp-a stage-width="1000" stage-height="1000"></three-exp-a> -->
+    <test-list></test-list>
+</body>
+</html>
