@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@stencil/core": "^0.18.1",
-    "workbox-build": "3.4.1"
+    "workbox-build": "4.1.1"
   },
   "license": "MIT"
 }
