@@ -18,11 +18,11 @@
   },
   "dependencies": {
     "lodash": "^4.17.11",
-    "three": "^0.102.1"
+    "vuid": "^1.0.0"
   },
   "devDependencies": {
     "@stencil/core": "^0.18.1",
-    "workbox-build": "4.1.1"
+    "workbox-build": "3.4.1"
   },
   "license": "MIT"
 }
