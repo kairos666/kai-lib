@@ -5,13 +5,55 @@
  */
 
 
-import '@stencil/core';
-
-
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
+import { JSX } from '@stencil/core';
 
 
 export namespace Components {
-
+  interface KaiAccordion {
+    'ariaHidden': boolean;
+  }
+  interface KaiCarousel {
+    'autoplay': boolean;
+    'carouselTitle': string;
+    'cycle': boolean;
+    'delay': number;
+    'transition': number;
+  }
+  interface KaiImg {
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute (optional only when used as pure decorational image, otherwise you should always have one)
+    */
+    'alt': string;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'decoding': 'sync'|'async'|'auto';
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'height': string;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'sizes': string;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute (required)
+    */
+    'src': string;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'srcset': string;
+    /**
+    * flag for toggling on/off the visble async loading behavior when off the default behavior is async loading after page is fully loaded
+    */
+    'visibleAsyncLoading': boolean;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'width': string;
+  }
   interface KaiListAnimator {
     'animName': string;
     'items': any[];
@@ -20,7 +62,55 @@ export namespace Components {
     'renderItemFunc': (any) => JSX.Element;
     'staggering'?: number;
   }
-  interface KaiListAnimatorAttributes extends StencilHTMLAttributes {
+  interface TestList {}
+}
+
+declare namespace LocalJSX {
+  interface KaiAccordion extends JSXBase.HTMLAttributes {
+    'ariaHidden'?: boolean;
+  }
+  interface KaiCarousel extends JSXBase.HTMLAttributes {
+    'autoplay'?: boolean;
+    'carouselTitle': string;
+    'cycle'?: boolean;
+    'delay'?: number;
+    'transition'?: number;
+  }
+  interface KaiImg extends JSXBase.HTMLAttributes {
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute (optional only when used as pure decorational image, otherwise you should always have one)
+    */
+    'alt'?: string;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'decoding'?: 'sync'|'async'|'auto';
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'height'?: string;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'sizes'?: string;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute (required)
+    */
+    'src': string;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'srcset'?: string;
+    /**
+    * flag for toggling on/off the visble async loading behavior when off the default behavior is async loading after page is fully loaded
+    */
+    'visibleAsyncLoading'?: boolean;
+    /**
+    * same as [&lt;img&gt;](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img) tag attribute
+    */
+    'width'?: string;
+  }
+  interface KaiListAnimator extends JSXBase.HTMLAttributes {
     'animName': string;
     'items': any[];
     'key': string;
@@ -28,22 +118,48 @@ export namespace Components {
     'renderItemFunc': (any) => JSX.Element;
     'staggering'?: number;
   }
+  interface TestList extends JSXBase.HTMLAttributes {}
 
-  interface TestList {}
-  interface TestListAttributes extends StencilHTMLAttributes {}
+  interface IntrinsicElements {
+    'kai-accordion': KaiAccordion;
+    'kai-carousel': KaiCarousel;
+    'kai-img': KaiImg;
+    'kai-list-animator': KaiListAnimator;
+    'test-list': TestList;
+  }
 }
 
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+
 declare global {
-  interface StencilElementInterfaces {
-    'KaiListAnimator': Components.KaiListAnimator;
-    'TestList': Components.TestList;
-  }
 
-  interface StencilIntrinsicElements {
-    'kai-list-animator': Components.KaiListAnimatorAttributes;
-    'test-list': Components.TestListAttributes;
-  }
 
+
+  interface HTMLKaiAccordionElement extends Components.KaiAccordion, HTMLStencilElement {}
+  var HTMLKaiAccordionElement: {
+    prototype: HTMLKaiAccordionElement;
+    new (): HTMLKaiAccordionElement;
+  };
+
+  interface HTMLKaiCarouselElement extends Components.KaiCarousel, HTMLStencilElement {}
+  var HTMLKaiCarouselElement: {
+    prototype: HTMLKaiCarouselElement;
+    new (): HTMLKaiCarouselElement;
+  };
+
+  interface HTMLKaiImgElement extends Components.KaiImg, HTMLStencilElement {}
+  var HTMLKaiImgElement: {
+    prototype: HTMLKaiImgElement;
+    new (): HTMLKaiImgElement;
+  };
 
   interface HTMLKaiListAnimatorElement extends Components.KaiListAnimator, HTMLStencilElement {}
   var HTMLKaiListAnimatorElement: {
@@ -58,22 +174,13 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
-    'kai-list-animator': HTMLKaiListAnimatorElement
-    'test-list': HTMLTestListElement
-  }
-
-  interface ElementTagNameMap {
+    'kai-accordion': HTMLKaiAccordionElement;
+    'kai-carousel': HTMLKaiCarouselElement;
+    'kai-img': HTMLKaiImgElement;
     'kai-list-animator': HTMLKaiListAnimatorElement;
     'test-list': HTMLTestListElement;
   }
 
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
+  interface ElementTagNameMap extends HTMLElementTagNameMap {}
 }
+

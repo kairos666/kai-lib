@@ -1,4 +1,4 @@
-import { Component, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, h, JSX, Prop, State, Watch, Element } from '@stencil/core';
 import differenceWith from 'lodash/differenceWith';
 import get from 'lodash/get';
 
@@ -40,7 +40,7 @@ export class ListAnimator {
     private runningInsertionAnimationCount:number = 0;
     private runningDeletionAnimationCount:number = 0;
     private currentDiffState:'initial'|'initial-pending-end'|'mid'|'mid-pending-end'|'end'; // no state = end state
-    private isDebug:boolean = false;
+    private isDebug:boolean = true;
 
     componentWillLoad() {
         // initial items sync

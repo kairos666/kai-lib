@@ -1,4 +1,4 @@
-import { Component, Prop, State, Watch, Element } from '@stencil/core';
+import { Component, h, Prop, State, Watch, Element } from '@stencil/core';
 
 /**
  * &lt;KAI-IMG&gt;

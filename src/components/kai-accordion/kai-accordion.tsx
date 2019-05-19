@@ -1,4 +1,4 @@
-import { Component, Element, Prop, Watch } from '@stencil/core';
+import { Component, h, Element, Prop, Watch } from '@stencil/core';
 
 @Component({
     tag: 'kai-accordion',

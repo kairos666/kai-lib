@@ -4,7 +4,7 @@ export const config: Config = {
   namespace: 'kai',
   outputTargets:[
     { type: 'dist' },
-    { type: 'docs' },
+    { type: 'docs-readme' },
     {
       type: 'www',
       serviceWorker: {

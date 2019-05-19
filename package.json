@@ -2,7 +2,7 @@
   "name": "april-fools",
   "version": "0.0.1",
   "description": "Stencil Component Starter",
-  "module": "dist/esm/index.js",
+  "module": "dist/index.mjs",
   "main": "dist/index.js",
   "unpkg": "dist/ionic.js",
   "types": "dist/types/components.d.ts",
@@ -21,7 +21,7 @@
     "vuid": "^1.0.0"
   },
   "devDependencies": {
-    "@stencil/core": "^0.18.1",
+    "@stencil/core": "^1.0.0-beta.1",
     "workbox-build": "3.4.1"
   },
   "license": "MIT"
